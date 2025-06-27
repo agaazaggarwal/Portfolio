@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Your Name</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+    </div>
+    
+    <canvas id="particle-canvas"></canvas>
+    <div class="custom-cursor"></div>
+    
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo"><img src="images\unnamed-removebg-preview.png"
+                 width="100"
+            height="100"></a>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="projects.html">All Projects</a>
+                <a href="education.html">Education</a>
+                <a href="achievements.html" class="active">Achievements</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h1 class="hero-title">
+                    <span class="line">My Notable</span>
+                    <span class="line highlight">Achievements</span>
+                </h1>
+                <p class="hero-subtitle">Milestones, awards, and recognitions</p>
+            </section>
+
+            <section class="achievements-section">
+                <div class="achievements-grid">
+                    <!-- Academic Achievements -->
+                    <div class="achievement-card academic">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-content">
+                            <h3>Most promising coder</h3>
+                            <p class="achievement-meta">2022 | WEBDEV Department</p>
+                            <p>Awarded for WEBDEV skills in the event "CAPTA CAELUM" hosted by Wynberg Allen Mussorie.</p>
+                        </div>
+                    </div>
+
+                    <!-- Competition Wins -->
+                    <div class="achievement-card competition">
+                        <div class="achievement-icon">🥇</div>
+                        <div class="achievement-content">
+                            <h3>3rd Place - IPSC IT FEST</h3>
+                            <p class="achievement-meta">2022 | National Level</p>
+                            <p>Won third prize in the IPSC IT FEST organised by Welham Boys School, among 20+ teams for showcasing a techy bracelet on a website.</p>
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <h2 class="section-title">By The Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="0">0</div>
+                        <div class="stat-label">Hackathons Participated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">Tech Awards Won</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="0">0</div>
+                        <div class="stat-label">Research Papers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="0">0</div>
+                        <div class="stat-label">Students Mentored</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="back-to-top">
+                <a href="#" class="btn secondary">Back to Top</a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">All Projects</a>
+                <a href="education.html">Education</a>
+                <a href="achievements.html" class="active">Achievements</a>
+            </div>
+            <p class="copyright">© 2025 Agaaz Aggarwal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top a');
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate stats counters
+        function animateCounters() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            statNumbers.forEach(stat => {
+                const target = +stat.getAttribute('data-count');
+                const count = +stat.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    stat.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    stat.innerText = target;
+                }
+            });
+        }
+
+        // Trigger counters when section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Agaaz Aggarwal</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+    </div>
+    
+    <canvas id="particle-canvas"></canvas>
+    <div class="custom-cursor"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo"> <a href="index.html"><img src="images\unnamed-removebg-preview.png"
+             width="100"
+            height="100"> </a>
+            </div>
+            <nav class="nav">
+                 <a href="index.html">Home</a>
+                <a href="projects.html" class="active">All Projects</a>
+                <a href="education.html">Education</a>
+                <a href="achievements.html">Achievements</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h1 class="hero-title">
+                    <span class="line">My Web Development</span>
+                    <span class="line highlight">Projects</span>
+                </h1>
+                <p class="hero-subtitle">Collection of my recent work and experiments</p>
+            </section>
+
+            <section class="projects-section">
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                    <button class="filter-btn" data-filter="experimental">Experimental</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image" style="background-image: url('images/Screenshot 2025-06-26 213557.png');"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">Node.js</span>
+                            </div>
+                            <h3>Digilet Showcase</h3>
+                            <p>Showcasing a futuristic NFC based bracelet which solves much more than you think.</p>
+                            <div class="project-links">
+                                <a href="https://resilient-meerkat-f65e39.netlify.app/" target="_blank" class="btn small">view</a>
+                                <a href="#" class="btn small secondary">Code</a>
+                            </div>
+                        </div>
+                    </div>
+                             <!-- Project 4 -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image" style="background-image: url('images/Screenshot 2025-06-26 215706.png')"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JS</span>
+                            </div>
+                            <h3>An E-Commerce Website</h3>
+                            <p>A love themed E-commerce website called Exclsv.</p>
+                            <div class="project-links">
+                                <a href="https://deluxe-syrniki-fd347a.netlify.app/" target="_blank" class="btn small">view</a>
+                                <a href="#" class="btn small secondary">code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="ui">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/600x400')"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">CSS</span>
+                            </div>
+                            <h3>Dashboard UI Kit</h3>
+                            <p>Modern admin dashboard design system with 50+ components.</p>
+                            <div class="project-links">
+                                <a href="#" class="btn small">View Design</a>
+                                <a href="#" class="btn small secondary">Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="experimental">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/600x400')"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Three.js</span>
+                                <span class="tag">WebGL</span>
+                            </div>
+                            <h3>3D Portfolio Concept</h3>
+                            <p>Interactive 3D environment built with WebGL and Three.js.</p>
+                            <div class="project-links">
+                                <a href="#" class="btn small">Experience</a>
+                                <a href="#" class="btn small secondary">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+           
+
+                    <!-- Project 5 -->
+                    <div class="project-card" data-category="ui">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/600x400')"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Animation</span>
+                                <span class="tag">GSAP</span>
+                            </div>
+                            <h3>Micro-interactions Library</h3>
+                            <p>Collection of delightful UI animations for web projects.</p>
+                            <div class="project-links">
+                                <a href="#" class="btn small">View Examples</a>
+                                <a href="#" class="btn small secondary">Install</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card" data-category="experimental">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/600x400')"></div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Web Audio</span>
+                                <span class="tag">Canvas</span>
+                            </div>
+                            <h3>Audio Visualizer</h3>
+                            <p>Music visualization tool that responds to audio frequencies.</p>
+                            <div class="project-links">
+                                <a href="#" class="btn small">Play Demo</a>
+                                <a href="#" class="btn small secondary">Source</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="back-to-top">
+                <a href="#" class="btn secondary">Back to Top</a>
+            </div>
+            <div class="footer-links">
+                 <a href="index.html">Home</a>
+                <a href="projects.html" class="active">All Projects</a>
+                <a href="education.html">Education</a>
+                <a href="achievements.html">Achievements</a>
+            </div>
+            <p class="copyright">© 2025 Agaaz Aggarwal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Projects filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter projects
+                const filter = button.dataset.filter;
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top a');
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
