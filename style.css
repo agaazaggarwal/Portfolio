@@ -827,7 +827,7 @@ section.show {
 }
 
 /* for general page*/
-/* Gear Page Specific Styles */
+/* General Page Specific Styles */
 .tabs-section {
     padding: 4rem 0;
     max-width: 1200px;
@@ -870,13 +870,13 @@ section.show {
 }
 
 /* Arsenal Section */
-.gear-grid {
+.General-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.gear-card {
+.General-card {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
@@ -885,30 +885,30 @@ section.show {
     transition: transform 0.3s;
 }
 
-.gear-card:hover {
+.General-card:hover {
     transform: translateY(-5px);
 }
 
-.gear-icon {
+.General-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
-.gear-card h3 {
+.General-card h3 {
     color: var(--primary);
     margin-bottom: 1.5rem;
 }
 
-.gear-specs {
+.General-specs {
     list-style: none;
 }
 
-.gear-specs li {
+.General-specs li {
     margin-bottom: 0.75rem;
     color: var(--text-secondary);
 }
 
-.gear-specs strong {
+.General-specs strong {
     color: var(--text);
     font-weight: 600;
 }
@@ -999,7 +999,7 @@ section.show {
         height: 350px;
     }
     
-    .gear-grid {
+    .General-grid {
         grid-template-columns: 1fr;
     }
 }
