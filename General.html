@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General | Agaaz Aggarwal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+        <div class="loader-particle"></div>
+    </div>
+    
+    <canvas id="particle-canvas"></canvas>
+    <div class="custom-cursor"></div>
+    
+    <div class="container">
+        <header class="header">
+                        <a href="index.html" class="logo"><img src="images\unnamed-removebg-preview.png"
+            width="100"
+            height="100"></a>
+            <nav class="nav">
+             <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="education.html">Education</a>
+                <a href="achievements.html">Achievements</a>
+
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h1 class="hero-title">
+                    <span class="line">My</span>
+                    <span class="line highlight">Arsenal & Photography</span>
+                </h1>
+            </section>
+
+            <section class="tabs-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="arsenal">My Arsenal</button>
+                    <button class="tab-btn" data-tab="photography">Photography</button>
+                </div>
+
+                <div class="tab-content active" id="arsenal">
+                    <div class="gear-grid">
+                        <div class="gear-card">
+                            <div class="gear-icon">💻</div>
+                            <h3>Laptop</h3>
+                            <ul class="gear-specs">
+                                <li><strong>Model:</strong> HP EVNY X360</li>
+                                <li><strong>Processor:</strong> Intel i7 12 Gen</li>
+                                <li><strong>RAM:</strong> 16GB</li>
+                                <li><strong>Storage:</strong> 1TB SSD</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="gear-card">
+                            <div class="gear-icon">📱</div>
+                            <h3>Smartphone</h3>
+                            <ul class="gear-specs">
+                                <li><strong>Model:</strong> </li>
+                                <li><strong>Storage:</strong> </li>
+                                <li><strong>Camera:</strong> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="photography">
+                    <div class="photo-gallery">
+                        <div class="photo-viewer">
+                            <img src="images/photography-1.jpg" alt="Photography 1" class="active-photo">
+                            <div class="photo-nav">
+                                <button class="nav-btn prev-btn">❮</button>
+                                <span class="photo-counter">1/5</span>
+                                <button class="nav-btn next-btn">❯</button>
+                            </div>
+                        </div>
+                        <div class="photo-thumbnails">
+                            <img src="" alt="Thumbnail 1" class="thumbnail active">
+                            <img src="" alt="Thumbnail 2" class="thumbnail">
+                            <!-- Add more thumbnails as needed -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="back-to-top">
+                <a href="#" class="btn secondary">Back to Top</a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <p class="copyright">© 2025 Agaaz Aggarwal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Update active tab button
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if(content.id === tabId) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Photo gallery functionality
+        const photos = [
+            'images/photography-1.jpg',
+            'images/photography-2.jpg',
+            // Add more image paths as needed
+        ];
+        
+        let currentPhotoIndex = 0;
+        const activePhoto = document.querySelector('.active-photo');
+        const photoCounter = document.querySelector('.photo-counter');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        function updateGallery() {
+            activePhoto.src = photos[currentPhotoIndex];
+            activePhoto.alt = `Photography ${currentPhotoIndex + 1}`;
+            photoCounter.textContent = `${currentPhotoIndex + 1}/${photos.length}`;
+            
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentPhotoIndex);
+            });
+        }
+        
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+            updateGallery();
+        });
+        
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+            updateGallery();
+        });
+        
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                currentPhotoIndex = index;
+                updateGallery();
+            });
+        });
+    </script>
+</body>
+</html>
