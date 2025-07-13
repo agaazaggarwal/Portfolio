@@ -102,6 +102,134 @@
         </footer>
     </div>
 
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+  <div id="chatbot-header">
+    <div class="chatbot-title">
+      <i class="fas fa-robot"></i>
+      <span>My Portfolio Assistant</span>
+    </div>
+    <button id="chatbot-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input">
+    <input type="text" id="chatbot-query" placeholder="Ask about my work...">
+    <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle">
+  <i class="fas fa-robot"></i>
+  <span class="notification-badge">1</span>
+</button>
+<script>
+// Chatbot Configuration
+const chatbotConfig = {
+  // Pre-trained responses
+  knowledgeBase: {
+    "hello": "👋 Hello! I'm your portfolio assistant. Ask me about my projects, skills or experience!",
+    "hi": "👋 Hello! I'm your portfolio assistant. Ask me about my projects, skills or experience!",
+    "job": "I am currently persuing an intership based on Artifical Intelligence, Will post about it once completed",
+    "projects": "You can view my projects from All Projects tab",
+    "project": "You can view my projects from All Projects tab",
+    "skills": "My core skills include: Frontend: HTML, CSS, JavaScript Design: UI/UX",
+    "experience": "Currently I am a first year BTECH CSE student" ,
+    "contact": "You can reach me at:\n📧 agaazaggarwal@gmail.com\n📞 +91 8872032444\n",
+    "default": "I'm not sure about that. Try asking about my projects, skills, or experience.",
+     
+  },
+  welcomeMessage: "🤖 Hi there! I'm your Portfolio assistant. Ask me anything about my portfolio!", 
+  typingDelay: 800 // ms delay before bot responds
+};
+
+// DOM Elements
+const elements = {
+  container: document.getElementById('chatbot-container'),
+  toggle: document.getElementById('chatbot-toggle'),
+  close: document.getElementById('chatbot-close'),
+  messages: document.getElementById('chatbot-messages'),
+  input: document.getElementById('chatbot-query'),
+  send: document.getElementById('chatbot-send'),
+  badge: document.querySelector('.notification-badge')
+};
+
+// Toggle Chatbot Visibility
+elements.toggle.addEventListener('click', () => {
+  elements.container.classList.toggle('open');
+  elements.badge.style.display = 'none';
+});
+
+elements.close.addEventListener('click', () => {
+  elements.container.classList.remove('open');
+});
+
+// Add Message to Chat
+function addMessage(content, isUser = false) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+  messageDiv.textContent = content;
+  elements.messages.appendChild(messageDiv);
+  elements.messages.scrollTop = elements.messages.scrollHeight;
+  
+  // Show notification badge for new bot messages
+  if (!isUser && !elements.container.classList.contains('open')) {
+    elements.badge.style.display = 'flex';
+  }
+}
+
+// Process User Query
+function processQuery(query) {
+  query = query.toLowerCase().trim();
+  
+  // Check knowledge base
+  for (const [keyword, response] of Object.entries(chatbotConfig.knowledgeBase)) {
+    if (query.includes(keyword.toLowerCase())) {
+      return response;
+    }
+  }
+  
+  // Fallback response
+  return chatbotConfig.knowledgeBase.default;
+}
+
+// Send Message
+function sendMessage() {
+  const query = elements.input.value.trim();
+  if (!query) return;
+  
+  addMessage(query, true);
+  elements.input.value = '';
+  
+  // Simulate typing delay
+  setTimeout(() => {
+    const response = processQuery(query);
+    addMessage(response);
+  }, chatbotConfig.typingDelay);
+}
+
+// Event Listeners
+elements.send.addEventListener('click', sendMessage);
+elements.input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+// Initialization
+window.addEventListener('DOMContentLoaded', () => {
+  // Welcome message after delay
+  setTimeout(() => {
+    addMessage(chatbotConfig.welcomeMessage);
+  }, 1500);
+  
+  // Auto-open first visit
+  if (!sessionStorage.getItem('chatbotShown')) {
+    setTimeout(() => {
+      elements.container.classList.add('open');
+      sessionStorage.setItem('chatbotShown', 'true');
+    }, 3000);
+  }
+});
+</script>
     <script src="script.js"></script>
 </body>
 </html>
